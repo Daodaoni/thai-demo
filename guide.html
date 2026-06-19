@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THAI × CDP Demo — Story & Test Guide (IIG)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#684B9B; --deep:#370E62; --gold:#F5C300; --gold-deep:#B8860B;
+    --magenta:#FF2E57; --navy:#2C3059; --ink:#424258; --muted:#6A6D87;
+    --line:#E4E0EC; --bg:#F7F5FB; --card:#fff; --lav:#F4EBFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px 80px;}
+
+  /* Hero */
+  .hero{background:linear-gradient(120deg,var(--deep),var(--purple) 65%,#5A3B92);color:#fff;padding:46px 0 40px;}
+  .hero .wrap{display:flex;flex-direction:column;gap:6px;}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1.1;font-weight:700;}
+  .hero p{opacity:.9;max-width:640px;margin-top:6px;}
+  .demo-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:var(--gold);color:#5C4A00;
+    font-weight:800;padding:11px 20px;border-radius:999px;text-decoration:none;width:fit-content;}
+  .demo-link:hover{filter:brightness(1.05);}
+
+  section{margin-top:34px;}
+  h2{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--deep);font-weight:700;
+     display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  h2 .dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:18px;}
+  .lead{font-size:16px;color:var(--navy);background:var(--lav);border-left:4px solid var(--purple);
+    padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;}
+  .quote{font-style:italic;color:var(--purple);font-weight:600;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .col{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 4px 18px rgba(40,30,70,.05);}
+  .col h3{font-size:17px;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .col .tagline{font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+  .col.guest{border-top:4px solid #9aa0b5;}
+  .col.rop{border-top:4px solid var(--gold);}
+  ol.steps{list-style:none;counter-reset:s;}
+  ol.steps li{counter-increment:s;position:relative;padding:9px 0 9px 38px;border-bottom:1px dashed var(--line);font-size:14px;}
+  ol.steps li:last-child{border-bottom:none;}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:24px;height:24px;border-radius:50%;
+    background:var(--purple);color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .col.guest ol.steps li::before{background:#9aa0b5;}
+  .col.rop ol.steps li::before{background:linear-gradient(135deg,#FBE08A,var(--gold));color:#5C4A00;}
+  .cdp{display:inline-block;font-size:11px;font-weight:700;color:var(--purple);background:var(--lav);
+    padding:1px 8px;border-radius:999px;margin-top:4px;}
+  strong{color:var(--navy);}
+  .hl{color:var(--purple);font-weight:700;} .hl-gold{color:var(--gold-deep);font-weight:700;}
+
+  /* reveal */
+  .reveal{background:linear-gradient(120deg,#FFF8E1,#FFFBF0);border:1px solid var(--gold);border-radius:16px;padding:24px;}
+  .reveal .pill{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:12px;border-radius:999px;padding:5px 12px;}
+  .pill-gold{background:linear-gradient(135deg,#FBE08A,var(--gold));color:#5C4A00;border:1px solid var(--gold);}
+  .pill-gray{background:#F0F0F5;color:#6A6D87;border:1px solid #D0D0DC;}
+
+  /* test table */
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line);font-size:13.5px;}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:var(--deep);color:#fff;font-size:12px;letter-spacing:.4px;text-transform:uppercase;}
+  td:first-child{font-weight:800;color:var(--purple);width:34px;text-align:center;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#FBFAFE;}
+  .badge{display:inline-block;font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;}
+  .b-rop{background:#EFE7FF;color:var(--purple);} .b-guest{background:#EEF0F4;color:#6A6D87;} .b-both{background:#FFF3D6;color:var(--gold-deep);}
+
+  .note{margin-top:24px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;}
+  .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;}
+
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}.hero h1{font-size:30px;}}
+  @media print{
+    body{background:#fff;} .demo-link{display:none;}
+    .hero{background:var(--deep)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    th,td,.col,.reveal,.lead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">For Demo &amp; Presentation by IIG</div>
+    <h1>THAI &times; CDP — A Tale of Two Travelers</h1>
+    <p>How a unified customer profile turns an anonymous booking into a personalized, rewarding journey — and the exact steps to demo it.</p>
+    <a class="demo-link" href="https://daodaoni.github.io/thai-demo/" target="_blank">▶ Open the live demo</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- STORY -->
+  <section>
+    <h2><span class="dot" style="background:var(--purple)"></span> The Story</h2>
+    <p class="lead">Two people open the <strong>same</strong> Thai Airways website to book the <strong>same</strong> Bangkok–London trip. One is a <strong>guest</strong> — THAI knows nothing about them. The other is <strong>Khun Somchai</strong>, a Royal Orchid Plus member whose profile is <span class="hl">synced from the CDP</span>: his miles, seat preference, favourite meals, and reward eligibility. Same website — <strong>completely different journey</strong>. That difference <em>is</em> the CDP.</p>
+  </section>
+
+  <!-- TWO COLUMNS -->
+  <section>
+    <h2><span class="dot" style="background:var(--gold)"></span> Two Journeys, Side by Side</h2>
+    <div class="cards">
+      <div class="col guest">
+        <h3>🟤 The Guest</h3>
+        <div class="tagline">Not signed in · no data · airline is flying blind</div>
+        <ol class="steps">
+          <li>Open the link → homepage loads.</li>
+          <li>Redeem Miles is <strong>locked</strong> — &ldquo;Sign in to use miles.&rdquo;</li>
+          <li>Click <strong>Search Flights</strong> → generic results.</li>
+          <li>Return flight → focus sits on <strong>Economy</strong> (cheapest guess, no insight).</li>
+          <li>Passenger Details → <strong>all fields blank</strong>, typed by hand.</li>
+          <li>Extra Services → generic &ldquo;Select Seat / Select Meal,&rdquo; no suggestions.</li>
+          <li>Checkout → a transaction. No recognition, no loyalty.</li>
+        </ol>
+        <p style="margin-top:14px;font-size:13.5px;"><strong>Takeaway:</strong> Functional, but anonymous. Every interaction starts from zero.</p>
+      </div>
+
+      <div class="col rop">
+        <h3>🟡 Khun Somchai (ROP + CDP)</h3>
+        <div class="tagline">Signed in · profile synced from CDP · recognized everywhere</div>
+        <ol class="steps">
+          <li>Click <strong>Sign In</strong> → ROP login <strong>pre-fills instantly</strong>. <span class="cdp">CDP: identity</span></li>
+          <li>Homepage greets <span class="hl">&ldquo;Khun Somchai · 3,000 ROP Miles&rdquo;</span> + 3 reward cards. <span class="cdp">CDP: points balance</span></li>
+          <li>Member status follows him on <strong>every page</strong> (top bar).</li>
+          <li>Return flight → focus shifts to <span class="hl-gold">Royal Silk</span> with a reward nudge. <span class="cdp">CDP: reward eligibility</span></li>
+          <li>Passenger Details → <strong>pre-filled</strong> + &ldquo;upgrade to Royal Silk&rdquo; miles prompt. <span class="cdp">CDP: profile + contact</span></li>
+          <li>Extra Services → seat <span class="hl">12A window, extra legroom</span> &amp; meals <span class="hl">Yakiniku / Stir-fried Prawns</span> already set. <span class="cdp">CDP: seat + meal history</span></li>
+          <li>Confirmation → recaps both flights, seats, meals, miles earned. He feels <strong>known</strong>.</li>
+        </ol>
+        <p style="margin-top:14px;font-size:13.5px;"><strong>Takeaway:</strong> Recognized, anticipated, rewarded — a booking becomes a relationship <em>and</em> a smart upsell.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVEAL -->
+  <section>
+    <h2><span class="dot" style="background:var(--magenta)"></span> The Reveal — the ROP Toggle</h2>
+    <div class="reveal">
+      <p>On any inner page, point to the <span class="pill pill-gold">🔒 ROP</span> button, then click it → it flips to <span class="pill pill-gray">🔓 Non-ROP</span>.</p>
+      <p style="margin-top:12px;"><strong>Instantly:</strong> the name vanishes, fields empty, Royal Silk focus drops back to Economy, personalization disappears — the guest experience. Click again to bring it all back.</p>
+      <p style="margin-top:14px;" class="quote">&ldquo;This switch is the CDP turning on and off. Same site, same flight — the only variable is whether we&rsquo;ve unified and activated the customer&rsquo;s data. That&rsquo;s the value, in one click.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- TEST GUIDE -->
+  <section>
+    <h2><span class="dot" style="background:var(--deep)"></span> Step-by-Step Test Guide</h2>
+    <p class="sub">Follow top to bottom. <span class="badge b-guest">GUEST</span> = before login &nbsp; <span class="badge b-rop">ROP</span> = after login &nbsp; <span class="badge b-both">BOTH</span> = either mode</p>
+    <table>
+      <thead><tr><th>#</th><th>Action</th><th>Expected result</th><th>Mode</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Open the demo link</td><td>Homepage: THAI hero, booking box (BKK→LHR, 17–24 Aug), &ldquo;Sign in to use miles&rdquo;</td><td><span class="badge b-guest">GUEST</span></td></tr>
+        <tr><td>2</td><td>Click <strong>Sign In / Join Now</strong> (top-right)</td><td>Royal Orchid Plus popup appears, <strong>pre-filled</strong> with member ID + password</td><td><span class="badge b-guest">GUEST</span></td></tr>
+        <tr><td>3</td><td>Click <strong>Sign In</strong></td><td>Spinner → gold greeting &ldquo;Khun Somchai · 3,000 ROP Miles,&rdquo; Redeem Miles enabled, 3 reward cards appear</td><td><span class="badge b-rop">ROP</span></td></tr>
+        <tr><td>4</td><td>Click <strong>Search Flights</strong></td><td>Outbound results (TG 916). Top shows member pill + gold <strong>🔒 ROP</strong> button</td><td><span class="badge b-rop">ROP</span></td></tr>
+        <tr><td>5</td><td>Select outbound → go to <strong>return flight</strong></td><td>LHR→BKK: <strong>Royal Silk</strong> highlighted with &ldquo;✦ Recommended for you&rdquo; + loyalty reward line</td><td><span class="badge b-rop">ROP</span></td></tr>
+        <tr><td>6</td><td>Continue to <strong>Passenger Details</strong></td><td>Name + contact <strong>pre-filled</strong>; purple 3,000-miles box: &ldquo;upgrade to Royal Silk&rdquo;</td><td><span class="badge b-rop">ROP</span></td></tr>
+        <tr><td>7</td><td>Continue to <strong>Extra Services</strong></td><td>Flight bar on top (BKK→LHR focused); seat <strong>12A window/extra-legroom</strong> &amp; meals pre-set with gold &ldquo;RESERVED&rdquo; tags</td><td><span class="badge b-rop">ROP</span></td></tr>
+        <tr><td>8</td><td>Complete → <strong>Confirmation</strong></td><td>&ldquo;Your Extra Services&rdquo; lists both flights&rsquo; seats + meals; both legs shown; miles earned</td><td><span class="badge b-rop">ROP</span></td></tr>
+        <tr><td>9</td><td>On any inner page, click <strong>🔒 ROP</strong></td><td>Flips to <strong>🔓 Non-ROP</strong> (gray): member info gone, fields empty, focus drops to Economy → the guest view</td><td><span class="badge b-both">BOTH</span></td></tr>
+        <tr><td>10</td><td>Click <strong>🔓 Non-ROP</strong> again</td><td>Full ROP personalization returns — the side-by-side comparison</td><td><span class="badge b-both">BOTH</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Core thing to demo:</strong> the <strong>🔒 ROP / 🔓 Non-ROP toggle</strong> (steps 9–10) — the live side-by-side of a personalized CDP member journey vs a generic guest journey.</p>
+    <p class="note"><strong>Tip:</strong> To make a PDF handout, open this page and press <strong>Cmd + P → Save as PDF</strong>.</p>
+  </section>
+
+  <div class="foot">For Demo and Presentation by IIG · Prototype only, no real data</div>
+</div>
+
+</body>
+</html>
