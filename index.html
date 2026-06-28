@@ -3696,6 +3696,16 @@ body {
 .redeem-card-badge.muted { background: rgba(106,109,135,.92); color: #fff; }
 .redeem-card.locked .redeem-card-img { filter: grayscale(.55) opacity(.9); }
 
+/* Non-air award cards (Market Place / THAI Shop / Royal Orchid Holiday) */
+.redeem-card { display: block; text-decoration: none; }
+.award-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.award-body { padding: 18px 20px 20px; display: flex; flex-direction: column; }
+.award-title { font-size: 15px; font-weight: 800; color: var(--tg-purple-deep); margin-bottom: 8px; line-height: 1.35; }
+.award-title .en { display: block; font-size: 12px; font-weight: 700; color: var(--purple); margin-top: 2px; }
+.award-desc { font-size: 12.5px; color: var(--gray-500); line-height: 1.55; flex: 1; margin-bottom: 14px; }
+.award-link { font-size: 13px; font-weight: 800; color: var(--purple); display: inline-flex; align-items: center; gap: 6px; }
+.award-link .ext { font-size: 11px; }
+
 /* Redeem Miles button state in booking widget */
 .booking-redeem.enabled { color: var(--purple); font-weight: 700; }
 .booking-redeem.enabled .toggle-switch { background: var(--purple); }
@@ -3776,6 +3786,29 @@ body.rop-on .rop-banner-guest { display: none; }
 .rop-points-text .rpt-msg { font-size: 16px; font-weight: 700; margin-top: 4px; }
 .rop-points-text .rpt-msg .gold { color: var(--gold); }
 
+/* Loyalty nudge inside the booking widget (home, ROP only) */
+.booking-loyalty {
+  display: none; margin-top: 18px; border-top: 1px solid var(--gray-100); padding-top: 16px;
+  flex-wrap: wrap; gap: 12px;
+}
+body.rop-on .booking-loyalty { display: flex; }
+.bl-card {
+  flex: 1; min-width: 240px; display: flex; align-items: flex-start; gap: 12px;
+  border-radius: var(--radius); padding: 14px 16px; font-size: 13.5px; line-height: 1.5;
+}
+.bl-expire {
+  background: #FFF4F6; border: 1px solid #F4C2CC; color: var(--navy);
+}
+.bl-earn {
+  background: linear-gradient(120deg, #FFF8E1, #FFFBF0); border: 1px solid var(--gold); color: var(--navy);
+}
+.bl-ico { font-size: 20px; line-height: 1; flex-shrink: 0; }
+.bl-card .bl-title { font-weight: 800; display: block; margin-bottom: 2px; }
+.bl-expire .bl-title { color: var(--magenta); }
+.bl-earn .bl-title { color: var(--gold-deep, #B8860B); }
+.bl-card .gold { color: #B8860B; font-weight: 800; }
+.bl-card .pp { color: var(--purple); font-weight: 800; }
+
 /* TG reward remark line under flight info (return page) */
 .silk-reward-remark {
   display: none; align-items: flex-start; gap: 10px; margin: 14px 0 4px;
@@ -3831,6 +3864,53 @@ body.rop-on .extra-prefilled-tag { display: inline-block; }
 .conf-extras-rop { display: none; }
 body.rop-on .conf-extras-rop { display: block; }
 
+/* Confirmation ROP reward recommendation (members only) */
+.conf-reward-rec { display: none; gap: 18px; align-items: flex-start;
+  background: linear-gradient(120deg, #FFF8E1, #FFFBF0); border: 1px solid var(--gold);
+  border-radius: var(--radius-lg); padding: 22px 24px; }
+body.rop-on .conf-reward-rec { display: flex; }
+.conf-reward-rec .crr-ico {
+  width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
+  background: linear-gradient(135deg, #FBE08A, var(--gold)); border: 1px solid var(--gold);
+  display: flex; align-items: center; justify-content: center; font-size: 26px;
+}
+.crr-label { font-size: 11px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold-deep, #B8860B); margin-bottom: 6px; }
+.crr-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.5; margin-bottom: 6px; }
+.crr-title .crr-gold { color: #B8860B; font-weight: 800; }
+.crr-desc { font-size: 13.5px; color: var(--gray-600); line-height: 1.55; margin-bottom: 14px; }
+.crr-btn {
+  background: var(--purple); color: #fff; border: none; border-radius: var(--radius-pill);
+  padding: 10px 22px; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer;
+}
+.crr-btn:hover { background: var(--purple-hover); }
+
+/* Return-flight baggage recommendation modal */
+.bag-modal-card { max-width: 440px; text-align: center; padding: 32px 30px 28px; }
+.bag-modal-ico {
+  width: 60px; height: 60px; margin: 0 auto 16px; border-radius: 16px;
+  background: var(--lavender); display: flex; align-items: center; justify-content: center; font-size: 30px;
+}
+.bag-modal-title { font-size: 21px; color: var(--tg-purple-deep); font-weight: 800; margin-bottom: 10px; }
+.bag-modal-msg { font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 20px; }
+.bag-modal-msg strong { color: var(--navy); }
+.bag-modal-offer {
+  display: flex; align-items: center; justify-content: space-between; text-align: left;
+  background: linear-gradient(120deg, #FBF7FF, #fff); border: 1.5px solid var(--purple);
+  border-radius: var(--radius); padding: 14px 18px; margin-bottom: 20px;
+}
+.bag-offer-amt { font-size: 18px; font-weight: 800; color: var(--purple); }
+.bag-offer-sub { font-size: 12px; color: var(--gray-500); }
+.bag-offer-price { font-size: 18px; font-weight: 800; color: var(--navy); }
+.bag-modal-actions { display: flex; gap: 12px; }
+.bag-btn-no, .bag-btn-add {
+  flex: 1; padding: 13px; font-size: 14px; font-weight: 700; font-family: inherit;
+  border-radius: var(--radius-pill); cursor: pointer; transition: all .15s;
+}
+.bag-btn-no { background: var(--white); border: 1.5px solid var(--gray-200); color: var(--gray-600); }
+.bag-btn-no:hover { background: var(--gray-50); }
+.bag-btn-add { background: var(--purple); border: 1.5px solid var(--purple); color: #fff; }
+.bag-btn-add:hover { background: var(--purple-hover); }
+
 /* Extras top flight bar (both ROP & Non-ROP) */
 .extras-flightbar {
   display: flex; gap: 10px; background: var(--white); border: 1px solid var(--gray-200);
@@ -3845,7 +3925,8 @@ body.rop-on .conf-extras-rop { display: block; }
 .efb-leg-route { font-size: 16px; font-weight: 800; color: var(--navy); }
 .efb-leg-route .efb-arrow { color: var(--purple); margin: 0 6px; }
 .efb-leg-meta { font-size: 12px; color: var(--gray-500); }
-.efb-leg-flag { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--purple); }
+.efb-leg-flag { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--purple); display: none; }
+.efb-leg.active .efb-leg-flag { display: inline; }
 
 /* Pre-reserved seat preview pill */
 .seat-prefill-row {
@@ -3922,7 +4003,6 @@ body.rop-on .seat-prefill-row { display: flex; }
       <div class="rop-miles-box">
         <div class="rop-miles-label">Your ROP Miles</div>
         <div class="rop-miles-val" id="rop-miles-val">3,000</div>
-        <div class="rop-miles-sub">Enough for 1 domestic redemption</div>
       </div>
     </div>
   </div>
@@ -3994,6 +4074,18 @@ body.rop-on .seat-prefill-row { display: flex; }
         <!-- Search button -->
         <button class="search-flights-btn" onclick="goTo('page-results')">Search Flights</button>
       </div>
+
+      <!-- Loyalty nudge (ROP members only) -->
+      <div class="booking-loyalty">
+        <div class="bl-card bl-expire">
+          <span class="bl-ico">⏳</span>
+          <span><span class="bl-title">1,500 miles expire this year</span>Use them before they fly away.</span>
+        </div>
+        <div class="bl-card bl-earn">
+          <span class="bl-ico">🌸</span>
+          <span><span class="bl-title">Fly Royal Silk both ways &amp; earn 17,784 miles</span>Bringing a <span class="gold">complimentary Royal Silk domestic round trip</span> within your reach.</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -4005,20 +4097,20 @@ body.rop-on .seat-prefill-row { display: flex; }
     </div>
     <div class="redeem-cards">
 
-      <!-- Card 1: 3,000 = 1 domestic trip (affordable now) -->
-      <div class="redeem-card" onclick="goTo('page-results')">
-        <img class="redeem-card-img" src="assets/rop-3000.png" alt="3,000 Miles equals 1 Domestic Trip">
-      </div>
+      <!-- Card 1: Royal Orchid Plus Market Place -->
+      <a class="redeem-card" href="https://www.thaiairways.com/en/content/spend-miles/non-air-awards/" target="_blank">
+        <img class="award-img" src="assets/lifestyleawards1.jpg" alt="Royal Orchid Plus Market Place">
+      </a>
 
-      <!-- Card 2: expiring miles reminder -->
-      <div class="redeem-card" onclick="goTo('page-results')">
-        <img class="redeem-card-img" src="assets/rop-1500.png" alt="Your 1,500 Miles Expire This Year">
-      </div>
+      <!-- Card 2: THAI Shop -->
+      <a class="redeem-card" href="https://www.thaiairways.com/en/content/spend-miles/non-air-awards/" target="_blank">
+        <img class="award-img" src="assets/lifestyleawards2.jpg" alt="THAI Shop">
+      </a>
 
-      <!-- Card 3: more rewards for special customers -->
-      <div class="redeem-card" onclick="goTo('page-results')">
-        <img class="redeem-card-img" src="assets/rop-reward.png" alt="More Rewards for Our Special Customers">
-      </div>
+      <!-- Card 3: Royal Orchid Holiday -->
+      <a class="redeem-card" href="https://www.thaiairways.com/en/content/spend-miles/non-air-awards/" target="_blank">
+        <img class="award-img" src="assets/lifestyleawards3.jpg" alt="Royal Orchid Holiday">
+      </a>
 
     </div>
   </section>
@@ -4193,7 +4285,8 @@ body.rop-on .seat-prefill-row { display: flex; }
     </div>
 
     <!-- Flight card 1 (TG 916) -->
-    <div class="flight-card">
+    <div class="flight-card silk-focus">
+      <span class="silk-focus-badge">✦ RECOMMENDED FOR YOU — EARN A FREE DOMESTIC TRIP</span>
       <div class="flight-card-header">
         <span class="flight-airline-mark"></span>
         <span class="flight-number">TG 916</span>
@@ -4224,14 +4317,15 @@ body.rop-on .seat-prefill-row { display: flex; }
           <div class="flight-airport-name">London</div>
         </div>
         <div class="flight-fares">
-          <div class="fare-box fare-box-economy fare-box-selected" onclick="goTo('page-fare')">
+          <div class="fare-box fare-box-economy focus-economy" onclick="goTo('page-fare')">
             <div class="fare-class">Economy</div>
             <div class="fare-price">THB 26,955</div>
             <div class="fare-co2">🌱 796 Kgs CO₂e</div>
           </div>
-          <div class="fare-box fare-box-disabled">
+          <div class="fare-box fare-box-economy focus-silk" onclick="goTo('page-fare')">
             <div class="fare-class">Royal Silk</div>
-            <div class="fare-na">Not Available</div>
+            <div class="fare-price">THB 98,195</div>
+            <div class="fare-co2">🌱 2,968 Kgs CO₂e</div>
           </div>
         </div>
       </div>
@@ -4327,9 +4421,10 @@ body.rop-on .seat-prefill-row { display: flex; }
               <div class="fare-price">THB 26,955</div>
               <div class="fare-co2">🌱 796 Kgs CO₂e</div>
             </div>
-            <div class="fare-box fare-box-disabled">
+            <div class="fare-box fare-box-economy">
               <div class="fare-class">Royal Silk</div>
-              <div class="fare-na">Not Available</div>
+              <div class="fare-price">THB 98,195</div>
+              <div class="fare-co2">🌱 2,968 Kgs CO₂e</div>
             </div>
           </div>
         </div>
@@ -5117,22 +5212,23 @@ body.rop-on .seat-prefill-row { display: flex; }
     <div class="pax-main">
       <a class="back-link" onclick="goTo('page-pax')">← EXTRA SERVICES</a>
 
-      <!-- Flight bar moved to top; BKK-LHR focused -->
+      <!-- Flight bar moved to top; click a leg to edit its extras -->
       <div class="extras-flightbar">
-        <div class="efb-leg active">
+        <div class="efb-leg active" id="efb-dep" onclick="extrasLeg('dep')">
           <div>
-            <div class="efb-leg-dir">Departure · selected</div>
+            <div class="efb-leg-dir">Departure</div>
             <div class="efb-leg-route">BKK <span class="efb-arrow">✈</span> LHR</div>
             <div class="efb-leg-meta">TG 916 · Mon 17 Aug · 12:45–19:15</div>
           </div>
           <span class="efb-leg-flag">Editing ▾</span>
         </div>
-        <div class="efb-leg">
+        <div class="efb-leg" id="efb-ret" onclick="extrasLeg('ret')">
           <div>
             <div class="efb-leg-dir">Return</div>
             <div class="efb-leg-route">LHR <span class="efb-arrow">✈</span> BKK</div>
             <div class="efb-leg-meta">TG 917 · Mon 24 Aug · 21:25–15:00⁺¹</div>
           </div>
+          <span class="efb-leg-flag">Editing ▾</span>
         </div>
       </div>
 
@@ -5145,7 +5241,7 @@ body.rop-on .seat-prefill-row { display: flex; }
         <div class="extra-service-icon extra-icon-seat">💺</div>
         <div class="extra-service-info">
           <h3>Pre-reserve Seats <span class="extra-prefilled-tag">RESERVED FOR YOU</span></h3>
-          <p class="rop-only" style="margin:0;">We've gently set aside the seat we know you love — <span class="tg-highlight">12A, a window seat with extra legroom</span> on TG 916. Do glance over it and make it your own.</p>
+          <p class="rop-only" id="seat-pref-msg" style="margin:0;">We've gently set aside the seat we know you love — <span class="tg-highlight">12A, a window seat with extra legroom</span> on TG 916. Do glance over it and make it your own.</p>
           <p class="rop-off-show">Reserve chargeable or non-chargeable seats online for international THAI flights up to 48 hours before departure.</p>
         </div>
         <button class="extra-action-btn"><span class="rop-label-on">Change Seat</span><span class="rop-label-off">Select Seat</span></button>
@@ -5159,8 +5255,8 @@ body.rop-on .seat-prefill-row { display: flex; }
           </svg>
         </div>
         <div>
-          <div>Your reserved seat on <strong>TG 916 (BKK ✈ LHR)</strong></div>
-          <div class="sp-seat"><span class="tg-highlight">12A</span> · Window · <span class="tg-highlight-gold">Extra Legroom</span></div>
+          <div>Your reserved seat on <strong id="seat-pref-flight">TG 916 (BKK ✈ LHR)</strong></div>
+          <div class="sp-seat" id="seat-pref-line"><span class="tg-highlight">12A</span> · Window · <span class="tg-highlight-gold">Extra Legroom</span></div>
         </div>
       </div>
 
@@ -5188,7 +5284,7 @@ body.rop-on .seat-prefill-row { display: flex; }
         <div class="extra-service-icon extra-icon-meal">🍽️</div>
         <div class="extra-service-info">
           <h3>In-Flight Special Meals <span class="extra-prefilled-tag">RESERVED YOUR FAVOURITE</span></h3>
-          <p class="rop-only" style="margin:0;">Because they're the flavours you return to, we've plated <span class="tg-highlight">Yakiniku</span> for your Lunch and <span class="tg-highlight">Stir-fried Prawns</span> for your Dinner. A taste of home, waiting at your seat.</p>
+          <p class="rop-only" id="meal-pref-msg" style="margin:0;">Because they're the flavours you return to, we've plated <span class="tg-highlight">Yakiniku</span> for your Lunch and <span class="tg-highlight">Stir-fried Prawns</span> for your Dinner. A taste of home, waiting at your seat.</p>
           <p class="rop-off-show">Special meals for religious or health reasons are available on request. Otherwise, regular meals will be served.</p>
           <div class="extra-from-price">Complimentary</div>
         </div>
@@ -5612,11 +5708,30 @@ body.rop-on .seat-prefill-row { display: flex; }
       </div>
     </div>
 
-    <!-- ROP Miles Earned -->
+    <!-- Royal Orchid Plus miles (ROP = earned / Non-ROP = join invite) -->
     <div style="background:linear-gradient(135deg, var(--purple) 0%, #6633ee 100%); border-radius: var(--radius-lg); padding: 22px; color: white; text-align: center;">
       <div style="font-size:11px;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:2px;font-weight:600;">Royal Orchid Plus</div>
-      <div style="font-family:'Bellefair',serif;font-size:34px;font-weight:600;margin:8px 0;" id="conf-miles">120 Miles Earned</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.85);">Miles will be credited within 3 business days after travel</div>
+      <!-- ROP member -->
+      <div class="rop-only">
+        <div style="font-family:'Bellefair',serif;font-size:34px;font-weight:600;margin:8px 0;" id="conf-miles">11,856 Miles Earned</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.85);">Miles will be credited within 3 business days after travel</div>
+      </div>
+      <!-- Non-member -->
+      <div class="rop-off-show">
+        <div style="font-family:'Bellefair',serif;font-size:34px;font-weight:600;margin:8px 0;">Earn 11,856 Miles</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.85);">Join Royal Orchid Plus to start collecting miles on journeys like this.</div>
+      </div>
+    </div>
+
+    <!-- ROP reward recommendation (members only) -->
+    <div class="conf-reward-rec">
+      <div class="crr-ico">🎁</div>
+      <div class="crr-body">
+        <div class="crr-label">A reward within reach, Khun Somchai</div>
+        <div class="crr-title">The <span class="crr-gold">11,856 miles</span> from this journey bring a <span class="crr-gold">domestic round trip in Economy (15,000 miles)</span> almost within your grasp.</div>
+        <div class="crr-desc">Add just one more domestic trip and the miles are yours, or to share the joy of flying with someone you love.</div>
+        <button class="crr-btn" onclick="goHome()">Book Another Trip ›</button>
+      </div>
     </div>
 
     <div class="form-card">
@@ -5881,7 +5996,7 @@ function syncReview() {
   if (g('conf-pax')) g('conf-pax').textContent = S.paxName.replace(/^(Mr\.|Mrs\.|Ms\.|Miss |Dr\.) /, '');
   if (g('conf-seat')) g('conf-seat').textContent = S.seat || '12A';
   if (g('conf-fare')) g('conf-fare').textContent = S.fareName;
-  if (g('conf-miles')) g('conf-miles').textContent = miles.toLocaleString() + ' Miles Earned';
+  if (g('conf-miles')) g('conf-miles').textContent = '11,856 Miles Earned';
 }
 function goPayment() {
   if (!document.getElementById('tnc').checked) {
@@ -6075,6 +6190,29 @@ function doPayment() {
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════
+     MODAL — RETURN-FLIGHT BAGGAGE RECOMMENDATION (ROP)
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-bag-return">
+  <div class="modal-card bag-modal-card">
+    <button class="modal-close" onclick="closeModal('modal-bag-return')">✕</button>
+    <div class="bag-modal-ico">🧳</div>
+    <h2 class="bag-modal-title">A little extra for the journey home?</h2>
+    <p class="bag-modal-msg">Khun Somchai, as you usually do on your way home, would you care to add <strong>excess baggage</strong> to your return flight <strong>TG 917 (LHR&nbsp;→&nbsp;BKK)</strong>? Travel with ease and bring every memory home.</p>
+    <div class="bag-modal-offer">
+      <div>
+        <div class="bag-offer-amt">+20 kg</div>
+        <div class="bag-offer-sub">Pre-book online &amp; save vs. the airport</div>
+      </div>
+      <div class="bag-offer-price">THB 6,950</div>
+    </div>
+    <div class="bag-modal-actions">
+      <button class="bag-btn-no" onclick="closeModal('modal-bag-return')">No, thanks</button>
+      <button class="bag-btn-add" onclick="closeModal('modal-bag-return')">Add Baggage</button>
+    </div>
+  </div>
+</div>
+
 
 <script>
 function openModal(id) {
@@ -6149,6 +6287,39 @@ function applyPaxPrefill(ropOn) {
       el.classList.remove('form-input-filled');
     }
   });
+}
+
+// Extras page: switch which leg's personalized seat + meal is shown
+function extrasLeg(leg) {
+  var data = {
+    dep: {
+      seatMsg: "We've gently set aside the seat we know you love — <span class='tg-highlight'>12A, a window seat with extra legroom</span> on TG 916. Do glance over it and make it your own.",
+      seatFlight: "TG 916 (BKK ✈ LHR)",
+      seatLine: "<span class='tg-highlight'>12A</span> &middot; Window &middot; <span class='tg-highlight-gold'>Extra Legroom</span>",
+      mealMsg: "Because they're the flavours you return to, we've plated <span class='tg-highlight'>Yakiniku</span> for your Lunch and <span class='tg-highlight'>Stir-fried Prawns</span> for your Dinner. A taste of home, waiting at your seat."
+    },
+    ret: {
+      seatMsg: "For your journey home, we've kept the seat you favour — <span class='tg-highlight'>12K, a window seat with extra legroom</span> on TG 917. Do glance over it and make it your own.",
+      seatFlight: "TG 917 (LHR ✈ BKK)",
+      seatLine: "<span class='tg-highlight'>12K</span> &middot; Window &middot; <span class='tg-highlight-gold'>Extra Legroom</span>",
+      mealMsg: "Carrying the tastes of home onward, we've plated <span class='tg-highlight'>Pork Congee</span> and <span class='tg-highlight'>Yakiniku</span> for your return. A taste of home, waiting at your seat."
+    }
+  }[leg];
+  if (!data) return;
+  var dep = leg === 'dep';
+  var d = document.getElementById('efb-dep'), r = document.getElementById('efb-ret');
+  if (d) d.classList.toggle('active', dep);
+  if (r) r.classList.toggle('active', !dep);
+  var set = function(id, html) { var e = document.getElementById(id); if (e) e.innerHTML = html; };
+  set('seat-pref-msg', data.seatMsg);
+  set('seat-pref-flight', data.seatFlight);
+  set('seat-pref-line', data.seatLine);
+  set('meal-pref-msg', data.mealMsg);
+
+  // ROP cross-sell: recommend return-flight excess baggage when switching to Return
+  if (!dep && document.body.classList.contains('rop-on')) {
+    openModal('modal-bag-return');
+  }
 }
 
 // For ROP: show In-Flight Meals BEFORE Excess Baggage; restore order for Non-ROP
